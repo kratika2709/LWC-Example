@@ -1,0 +1,30 @@
+#HTML
+<template>
+    <lightning-card title="Query Selector">
+        
+        <h1>This Is my Team</h1> 
+         <template for:each={TeamMembers} for:item="Team">
+             <div class="TeamAll" key={Team}>{Team}</div>
+         </template>
+         <lightning-button label="Click Here" onclick={doClick} slot="actions"></lightning-button>
+    </lightning-card>
+</template>
+============================
+#js
+import { LightningElement } from 'lwc';
+
+export default class QuerySelector extends LightningElement {
+
+    TeamMembers = ["Kratika","Rizwan" , "Vishu","Ritika","Anant"];
+    doClick(event){
+        let data = this.template.querySelector('h1')
+        console.log('query selector', data.innerText)
+        let Teamdata;
+        Teamdata = this.template.querySelectorAll('.TeamAll');
+        Array.from(Teamdata).forEach(item=>{
+            console.log(item.innerText)
+            item.setAttribute('title',item.innerText)
+            item.style.color =`red`
+        })
+    }
+}
