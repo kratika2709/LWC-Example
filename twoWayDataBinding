@@ -1,0 +1,42 @@
+#HTML
+<template>
+  <lightning-card title="Two Way Binding" icon-name="standard:bot">
+    <h1>Two Way Data Binding</h1>
+    <h2>Employee Name:{obj.EmployeeName}</h2>
+    <h2>Employee location:{obj.Employeelocation}</h2>
+    <lightning-input label="Enter Here" onkeyup={doChange}></lightning-input>
+    <lightning-input label="Enter Here" onkeyup={doChange1}></lightning-input>
+   </lightning-card>
+</template>
+============================
+#js
+import IsReductionOrder from '@salesforce/schema/Order.IsReductionOrder';
+import { LightningElement,track } from 'lwc';
+
+export default class TwoWayDataBinding extends LightningElement {
+  
+   @track obj={
+        EmployeeName: "Kratika",
+        Employeelocation: "Indore"
+    }
+   
+    doChange(event){
+       
+        this.obj.EmployeeName= event.target.value
+    }
+    doChange1(event){
+       
+        
+        this.obj.Employeelocation= event.target.value
+    }
+}
+===============================
+#xml
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+    </targets>
+</LightningComponentBundle>
