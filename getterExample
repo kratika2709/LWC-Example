@@ -1,0 +1,27 @@
+#HTML
+<template>
+    <lightning-card title="getterExample" icon-name="standard:calculated_insights">
+        <lightning-button label="Clicl Here" onclick={doClick} ></lightning-button>
+        <template if:true={isVisible}>{doShow}
+        </template>
+     </lightning-card>
+</template>
+===============================
+#js
+import { LightningElement ,track} from 'lwc';
+
+export default class GetterExample extends LightningElement {
+    users=['Ram','Laxman','Bharat','shatrughn'] 
+    isVisible = false;
+    get doShow(){
+        return this.users[1]
+     }
+     doClick(event)
+     {
+    this.isVisible=true
+    
+ }
+    
+}
+===============================
+#
