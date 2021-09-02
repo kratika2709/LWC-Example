@@ -1,0 +1,49 @@
+#HTML
+<template>
+    <lightning-card title="Calculator" icon-name="standard:trailhead">
+        <lightning-input name="First" label="First Number" type="integer" onchange = {handleNum1}></lightning-input>
+        <lightning-input name="second" label="Second Number" type="integer" onchange={handleNum2}></lightning-input>
+    <lightning-button label="Sum" onclick={doSum}></lightning-button>
+    <lightning-button label="Subtract" onclick={doSub}></lightning-button>
+    <lightning-button label="Division" onclick={doDiv}></lightning-button>
+    <lightning-button label="Multiply" onclick={doMul}></lightning-button>
+    <lightning-button label="Clear" onclick={doclr}></lightning-button>
+    <lightning-input name="result" label="Result" type="integer" value={result}></lightning-input>
+    </lightning-card>
+</template>
+=====================================
+#js
+import { LightningElement ,track} from 'lwc';
+
+export default class ConditionalRenderingCalculator extends LightningElement {
+   @track First
+   @track second
+   @track result
+   
+   doSum(){
+       this.result=Number(this.First)+Number(this.second)
+   }
+   doSub(){
+    this.result=Number(this.First)-Number(this.second)
+   }
+   doDiv(){ 
+    this.result=Number(this.First)/Number(this.second)
+   }
+   doMul(){
+    this.result=Number(this.First)*Number(this.second)
+   }
+   doclr(){
+     this.first=null
+     this.second=null 
+    this.result=null
+   }
+
+   handleNum1(event){
+    this.First= event.target.value
+   }
+   handleNum2(event){
+    this.second= event.target.value
+   }
+
+}
+
